@@ -116,7 +116,7 @@ class _AddSubjectScreenState extends State<AddSubjectScreen> {
                 _GradePreviewCard(
                     mark: int.tryParse(_markController.text.trim())),
 
-              const Spacer(),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.01),
 
               ElevatedButton.icon(
                 onPressed: _submit,
