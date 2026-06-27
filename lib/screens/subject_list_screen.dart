@@ -1,9 +1,7 @@
-// lib/screens/subject_list_screen.dart
-
 import 'package:flutter/material.dart';
+import 'package:grade_tracker/providers/subject_provider.dart';
+import 'package:grade_tracker/widgets/grade_badge.dart';
 import 'package:provider/provider.dart';
-import '../providers/subject_provider.dart';
-import '../widgets/grade_badge.dart';
 
 class SubjectListScreen extends StatelessWidget {
   const SubjectListScreen({super.key});
@@ -77,12 +75,14 @@ class SubjectListScreen extends StatelessWidget {
                     background: Container(
                       alignment: Alignment.centerRight,
                       padding: const EdgeInsets.only(right: 24),
-                      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 6),
                       decoration: BoxDecoration(
                         color: theme.colorScheme.error.withOpacity(0.85),
                         borderRadius: BorderRadius.circular(14),
                       ),
-                      child: const Icon(Icons.delete_outline, color: Colors.white, size: 26),
+                      child: const Icon(Icons.delete_outline,
+                          color: Colors.white, size: 26),
                     ),
                     onDismissed: (_) {
                       provider.removeSubject(index);
@@ -97,7 +97,8 @@ class SubjectListScreen extends StatelessWidget {
                     },
                     child: Card(
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 14),
                         child: Row(
                           children: [
                             GradeBadge(grade: subject.grade, size: 44),
@@ -106,7 +107,8 @@ class SubjectListScreen extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(subject.name, style: theme.textTheme.titleMedium),
+                                  Text(subject.name,
+                                      style: theme.textTheme.titleMedium),
                                   const SizedBox(height: 3),
                                   Text(
                                     'Mark: ${subject.mark} / 100',
@@ -153,7 +155,8 @@ class _MarkBar extends StatelessWidget {
           LinearProgressIndicator(
             value: mark / 100,
             backgroundColor: theme.colorScheme.secondary.withOpacity(0.15),
-            valueColor: AlwaysStoppedAnimation<Color>(theme.colorScheme.secondary),
+            valueColor:
+                AlwaysStoppedAnimation<Color>(theme.colorScheme.secondary),
             borderRadius: BorderRadius.circular(4),
             minHeight: 4,
           ),

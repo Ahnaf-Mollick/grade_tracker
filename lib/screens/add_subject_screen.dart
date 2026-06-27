@@ -1,9 +1,7 @@
-// lib/screens/add_subject_screen.dart
-
 import 'package:flutter/material.dart';
+import 'package:grade_tracker/models/subject.dart';
+import 'package:grade_tracker/providers/subject_provider.dart';
 import 'package:provider/provider.dart';
-import '../models/subject.dart';
-import '../providers/subject_provider.dart';
 
 class AddSubjectScreen extends StatefulWidget {
   const AddSubjectScreen({super.key});
@@ -52,76 +50,81 @@ class _AddSubjectScreenState extends State<AddSubjectScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 28, 20, 20),
-      child: Form(
-        key: _formKey,
-        autovalidateMode: _submitted
-            ? AutovalidateMode.always
-            : AutovalidateMode.disabled,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text('Add Subject', style: theme.textTheme.headlineMedium),
-            const SizedBox(height: 6),
-            Text(
-              'Enter a subject name and mark out of 100.',
-              style: theme.textTheme.bodyMedium,
-            ),
-            const SizedBox(height: 32),
-
-            // Subject name field
-            TextFormField(
-              controller: _nameController,
-              textCapitalization: TextCapitalization.words,
-              decoration: const InputDecoration(
-                labelText: 'Subject Name',
-                hintText: 'e.g. Mathematics',
-                prefixIcon: Icon(Icons.book_outlined),
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      behavior: HitTestBehavior.opaque,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(20, 28, 20, 20),
+        child: Form(
+          key: _formKey,
+          autovalidateMode:
+              _submitted ? AutovalidateMode.always : AutovalidateMode.disabled,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text('Add Subject', style: theme.textTheme.headlineMedium),
+              const SizedBox(height: 6),
+              Text(
+                'Enter a subject name and mark out of 100.',
+                style: theme.textTheme.bodyMedium,
               ),
-              validator: (v) {
-                if (v == null || v.trim().isEmpty) {
-                  return 'Subject name cannot be empty';
-                }
-                return null;
-              },
-            ),
-            const SizedBox(height: 16),
+              const SizedBox(height: 32),
 
-            // Mark field
-            TextFormField(
-              controller: _markController,
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                labelText: 'Mark',
-                hintText: '0 – 100',
-                prefixIcon: Icon(Icons.edit_outlined),
-                suffixText: '/ 100',
+              // Subject name field
+              TextFormField(
+                controller: _nameController,
+                textCapitalization: TextCapitalization.words,
+                decoration: const InputDecoration(
+                  labelText: 'Subject Name',
+                  hintText: 'e.g. Mathematics',
+                  prefixIcon: Icon(Icons.book_outlined),
+                ),
+                validator: (v) {
+                  if (v == null || v.trim().isEmpty) {
+                    return 'Subject name cannot be empty';
+                  }
+                  return null;
+                },
               ),
-              validator: (v) {
-                if (v == null || v.trim().isEmpty) {
-                  return 'Mark cannot be empty';
-                }
-                final n = int.tryParse(v.trim());
-                if (n == null) return 'Enter a valid number';
-                if (n < 0 || n > 100) return 'Mark must be between 0 and 100';
-                return null;
-              },
-            ),
-            const SizedBox(height: 32),
+              const SizedBox(height: 16),
 
-            // Grade preview
-            if (_nameController.text.isNotEmpty || _markController.text.isNotEmpty)
-              _GradePreviewCard(mark: int.tryParse(_markController.text.trim())),
+              // Mark field
+              TextFormField(
+                controller: _markController,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  labelText: 'Mark',
+                  hintText: '0 – 100',
+                  prefixIcon: Icon(Icons.edit_outlined),
+                  suffixText: '/ 100',
+                ),
+                validator: (v) {
+                  if (v == null || v.trim().isEmpty) {
+                    return 'Mark cannot be empty';
+                  }
+                  final n = int.tryParse(v.trim());
+                  if (n == null) return 'Enter a valid number';
+                  if (n < 0 || n > 100) return 'Mark must be between 0 and 100';
+                  return null;
+                },
+              ),
+              const SizedBox(height: 32),
 
-            const Spacer(),
+              // Grade preview
+              if (_nameController.text.isNotEmpty ||
+                  _markController.text.isNotEmpty)
+                _GradePreviewCard(
+                    mark: int.tryParse(_markController.text.trim())),
 
-            ElevatedButton.icon(
-              onPressed: _submit,
-              icon: const Icon(Icons.add_circle_outline, size: 20),
-              label: const Text('Add Subject'),
-            ),
-          ],
+              const Spacer(),
+
+              ElevatedButton.icon(
+                onPressed: _submit,
+                icon: const Icon(Icons.add_circle_outline, size: 20),
+                label: const Text('Add Subject'),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -150,11 +153,13 @@ class _GradePreviewCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: theme.colorScheme.secondary.withOpacity(0.08),
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: theme.colorScheme.secondary.withOpacity(0.25)),
+        border:
+            Border.all(color: theme.colorScheme.secondary.withOpacity(0.25)),
       ),
       child: Row(
         children: [
-          Icon(Icons.auto_awesome, size: 18, color: theme.colorScheme.secondary),
+          Icon(Icons.auto_awesome,
+              size: 18, color: theme.colorScheme.secondary),
           const SizedBox(width: 10),
           Text(
             mark != null && grade != '?'
@@ -171,9 +176,9 @@ class _GradePreviewCard extends StatelessWidget {
   }
 
   String _gradeDesc(String g) => switch (g) {
-    'A' => '80–100',
-    'B' => '65–79',
-    'C' => '50–64',
-    _ => 'Below 50',
-  };
+        'A' => '80–100',
+        'B' => '65–79',
+        'C' => '50–64',
+        _ => 'Below 50',
+      };
 }

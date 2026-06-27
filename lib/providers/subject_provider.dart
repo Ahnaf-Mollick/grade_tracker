@@ -1,7 +1,5 @@
-// lib/providers/subject_provider.dart
-
 import 'package:flutter/foundation.dart';
-import '../models/subject.dart';
+import 'package:grade_tracker/models/subject.dart';
 
 class SubjectProvider extends ChangeNotifier {
   final List<Subject> _subjects = [];

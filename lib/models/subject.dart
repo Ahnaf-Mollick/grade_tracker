@@ -1,5 +1,3 @@
-// lib/models/subject.dart
-
 class Subject {
   final String name;
   final int _mark;

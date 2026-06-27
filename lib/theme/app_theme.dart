@@ -1,27 +1,31 @@
-// lib/theme/app_theme.dart
-
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  // ── Light palette ─────────────────────────────────────────────────────────
+  // --- Light palette -----------------------------
   static const _lightBackground = Color(0xFFF7F5F0);
   static const _lightSurface = Color(0xFFFFFFFF);
-  static const _lightPrimary = Color(0xFF1A1A2E); // deep navy
-  static const _lightAccent = Color(0xFFD4A857); // warm gold
+  static const _lightPrimary = Color(0xFF1A1A2E);
+  static const _lightAccent = Color(0xFFD4A857);
   static const _lightOnPrimary = Color(0xFFFFFFFF);
   static const _lightOnSurface = Color(0xFF1A1A2E);
   static const _lightSubtle = Color(0xFF8A8A9A);
   static const _lightError = Color(0xFFC0392B);
 
-  // ── Dark palette ──────────────────────────────────────────────────────────
+  // --- Dark palette ----------------------------
   static const _darkBackground = Color(0xFF0F0F1A);
   static const _darkSurface = Color(0xFF1C1C2E);
-  static const _darkPrimary = Color(0xFFD4A857); // gold becomes primary
+  static const _darkPrimary = Color(0xFFD4A857);
   static const _darkAccent = Color(0xFFD4A857);
   static const _darkOnPrimary = Color(0xFF0F0F1A);
   static const _darkOnSurface = Color(0xFFEAE8E0);
   static const _darkSubtle = Color(0xFF6A6A7A);
   static const _darkError = Color(0xFFE74C3C);
+
+  // --- Grade Distribution Bar Colors-------
+  static const _gradeA = Color(0xFF2ECC71);
+  static const _gradeB = Color(0xFF2980B9);
+  static const _gradeC = Color(0xFFF39C12);
+  static const _gradeF = Color(0xFFC0392B);
 
   static ThemeData light() {
     return ThemeData(
@@ -239,5 +243,14 @@ class AppTheme {
         side: BorderSide.none,
       ),
     );
+  }
+
+  static Color gradeColor(String grade) {
+    return switch (grade) {
+      'A' => _gradeA,
+      'B' => _gradeB,
+      'C' => _gradeC,
+      _ => _gradeF,
+    };
   }
 }

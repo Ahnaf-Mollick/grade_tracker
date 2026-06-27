@@ -1,5 +1,3 @@
-// lib/providers/nav_provider.dart
-
 import 'package:flutter/foundation.dart';
 
 class NavProvider extends ChangeNotifier {

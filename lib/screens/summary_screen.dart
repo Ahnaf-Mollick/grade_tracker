@@ -1,9 +1,8 @@
-// lib/screens/summary_screen.dart
-
 import 'package:flutter/material.dart';
+import 'package:grade_tracker/providers/subject_provider.dart';
+import 'package:grade_tracker/theme/app_theme.dart';
+import 'package:grade_tracker/widgets/grade_badge.dart';
 import 'package:provider/provider.dart';
-import '../providers/subject_provider.dart';
-import '../widgets/grade_badge.dart';
 
 class SummaryScreen extends StatelessWidget {
   const SummaryScreen({super.key});
@@ -77,7 +76,8 @@ class SummaryScreen extends StatelessWidget {
 
               // Grade distribution
               if (provider.totalSubjects > 0) ...[
-                Text('Grade Distribution', style: theme.textTheme.headlineSmall),
+                Text('Grade Distribution',
+                    style: theme.textTheme.headlineSmall),
                 const SizedBox(height: 12),
                 ...['A', 'B', 'C', 'F'].map((g) {
                   final count = gradeCounts[g] ?? 0;
@@ -94,31 +94,36 @@ class SummaryScreen extends StatelessWidget {
 
                 // Passing subjects list (uses .where())
                 if (passing.isNotEmpty) ...[
-                  Text('Passing Subjects', style: theme.textTheme.headlineSmall),
+                  Text('Passing Subjects',
+                      style: theme.textTheme.headlineSmall),
                   const SizedBox(height: 10),
                   ...passing.map((s) => Padding(
-                    padding: const EdgeInsets.only(bottom: 8),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-                      decoration: BoxDecoration(
-                        color: theme.colorScheme.surface,
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                          color: const Color(0xFF27AE60).withOpacity(0.3),
-                        ),
-                      ),
-                      child: Row(
-                        children: [
-                          Icon(Icons.check_circle, size: 16, color: const Color(0xFF27AE60)),
-                          const SizedBox(width: 10),
-                          Expanded(
-                            child: Text(s.name, style: theme.textTheme.titleMedium),
+                        padding: const EdgeInsets.only(bottom: 8),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 14, vertical: 10),
+                          decoration: BoxDecoration(
+                            color: theme.colorScheme.surface,
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                              color: const Color(0xFF27AE60)
+                                  .withValues(alpha: 0.3),
+                            ),
                           ),
-                          GradeBadge(grade: s.grade, size: 30),
-                        ],
-                      ),
-                    ),
-                  )),
+                          child: Row(
+                            children: [
+                              const Icon(Icons.check_circle,
+                                  size: 16, color: Color(0xFF27AE60)),
+                              const SizedBox(width: 10),
+                              Expanded(
+                                child: Text(s.name,
+                                    style: theme.textTheme.titleMedium),
+                              ),
+                              GradeBadge(grade: s.grade, size: 30),
+                            ],
+                          ),
+                        ),
+                      )),
                 ],
               ] else
                 _EmptyState(),
@@ -135,7 +140,8 @@ class _HeroCard extends StatelessWidget {
   final double average;
   final int total;
 
-  const _HeroCard({required this.grade, required this.average, required this.total});
+  const _HeroCard(
+      {required this.grade, required this.average, required this.total});
 
   @override
   Widget build(BuildContext context) {
@@ -146,7 +152,7 @@ class _HeroCard extends StatelessWidget {
         gradient: LinearGradient(
           colors: [
             theme.colorScheme.primary,
-            theme.colorScheme.primary.withOpacity(0.8),
+            theme.colorScheme.primary.withValues(alpha: 0.8),
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -162,12 +168,14 @@ class _HeroCard extends StatelessWidget {
                 Text(
                   'Overall Grade',
                   style: theme.textTheme.titleSmall?.copyWith(
-                    color: theme.colorScheme.onPrimary.withOpacity(0.7),
+                    color: theme.colorScheme.onPrimary.withValues(alpha: 0.7),
                   ),
                 ),
                 const SizedBox(height: 6),
                 Text(
-                  total == 0 ? 'No data yet' : 'Average: ${average.toStringAsFixed(1)} / 100',
+                  total == 0
+                      ? 'No data yet'
+                      : 'Average: ${average.toStringAsFixed(1)} / 100',
                   style: theme.textTheme.headlineSmall?.copyWith(
                     color: theme.colorScheme.onPrimary,
                   ),
@@ -179,7 +187,7 @@ class _HeroCard extends StatelessWidget {
             width: 64,
             height: 64,
             decoration: BoxDecoration(
-              color: theme.colorScheme.onPrimary.withOpacity(0.12),
+              color: theme.colorScheme.onPrimary.withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(12),
             ),
             alignment: Alignment.center,
@@ -214,13 +222,14 @@ class _StatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final color = isNegative ? theme.colorScheme.error : theme.colorScheme.primary;
+    final color =
+        isNegative ? theme.colorScheme.error : theme.colorScheme.primary;
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
       decoration: BoxDecoration(
         color: theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: color.withOpacity(0.15)),
+        border: Border.all(color: color.withValues(alpha: 0.15)),
       ),
       child: Column(
         children: [
@@ -240,14 +249,10 @@ class _GradeBar extends StatelessWidget {
   final int count;
   final double fraction;
 
-  const _GradeBar({required this.grade, required this.count, required this.fraction});
+  const _GradeBar(
+      {required this.grade, required this.count, required this.fraction});
 
-  Color _color() => switch (grade) {
-    'A' => const Color(0xFF27AE60),
-    'B' => const Color(0xFF2980B9),
-    'C' => const Color(0xFFF39C12),
-    _ => const Color(0xFFC0392B),
-  };
+  Color _color() => AppTheme.gradeColor(grade);
 
   @override
   Widget build(BuildContext context) {
@@ -261,7 +266,8 @@ class _GradeBar extends StatelessWidget {
             width: 20,
             child: Text(
               grade,
-              style: TextStyle(color: color, fontWeight: FontWeight.w800, fontSize: 13),
+              style: TextStyle(
+                  color: color, fontWeight: FontWeight.w800, fontSize: 13),
             ),
           ),
           const SizedBox(width: 10),
@@ -271,7 +277,7 @@ class _GradeBar extends StatelessWidget {
               child: LinearProgressIndicator(
                 value: fraction,
                 minHeight: 10,
-                backgroundColor: color.withOpacity(0.12),
+                backgroundColor: color.withValues(alpha: 0.12),
                 valueColor: AlwaysStoppedAnimation<Color>(color),
               ),
             ),
@@ -299,10 +305,11 @@ class _EmptyState extends StatelessWidget {
             Icon(
               Icons.bar_chart_outlined,
               size: 64,
-              color: theme.colorScheme.primary.withOpacity(0.15),
+              color: theme.colorScheme.primary.withValues(alpha: 0.15),
             ),
             const SizedBox(height: 12),
-            Text('No data to summarise yet', style: theme.textTheme.headlineSmall),
+            Text('No data to summarise yet',
+                style: theme.textTheme.headlineSmall),
             const SizedBox(height: 6),
             Text(
               'Add at least one subject to see your summary.',
