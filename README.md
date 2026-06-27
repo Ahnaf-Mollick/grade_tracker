@@ -71,7 +71,52 @@ lib/
 └── widgets/
     └── grade_badge.dart       # Reusable grade chip widget
 ```
+## Screenshots
 
+### 🌙 Dark Theme
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/87e7cabf-b4c3-4b9c-92d6-55fc4d54498e" width="250"/>
+      <br />
+      Add Subject
+    </td>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/4af33ff4-bb8d-4dbd-bdcd-5ef21ec457a2" width="250"/>
+      <br />
+      Subjects List
+    </td>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/a063273e-3fd3-4f7b-92f9-083f08017ed2" width="250"/>
+      <br />
+      Summary
+    </td>
+  </tr>
+</table>
+
+
+### ☀️ Light Theme
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/5117e382-a2bf-411e-a096-870f73644f65" width="250"/>
+      <br />
+      Add Subject
+    </td>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/af090cb0-2b1f-46a0-bbb7-eec4c29687b0" width="250"/>
+      <br />
+      Subjects List
+    </td>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/1b34c88e-c400-451c-9ee6-44aae533ecd1" width="250"/>
+      <br />
+      Summary
+    </td>
+  </tr>
+</table>
 ---
 
 ## Grade Scale
