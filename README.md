@@ -34,7 +34,7 @@ A student grade tracker built with **Flutter** and **Provider** state management
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/grade_tracker.git
+git clone https://github.com/Ahnaf-Mollick/grade_tracker.git
 cd grade_tracker
 
 # Fetch dependencies
