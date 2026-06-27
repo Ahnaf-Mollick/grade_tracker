@@ -47,9 +47,7 @@ flutter run
 ### Run on a specific platform
 
 ```bash
-flutter run -d chrome    # Web
 flutter run -d android   # Android emulator / device
-flutter run -d ios       # iOS simulator / device (macOS only)
 ```
 
 ---
