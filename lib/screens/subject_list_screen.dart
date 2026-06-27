@@ -22,7 +22,7 @@ class SubjectListScreen extends StatelessWidget {
                 Icon(
                   Icons.school_outlined,
                   size: 72,
-                  color: theme.colorScheme.primary.withOpacity(0.18),
+                  color: theme.colorScheme.primary.withValues(alpha: 0.18),
                 ),
                 const SizedBox(height: 16),
                 Text('No subjects yet', style: theme.textTheme.headlineSmall),
@@ -78,7 +78,7 @@ class SubjectListScreen extends StatelessWidget {
                       margin: const EdgeInsets.symmetric(
                           horizontal: 16, vertical: 6),
                       decoration: BoxDecoration(
-                        color: theme.colorScheme.error.withOpacity(0.85),
+                        color: theme.colorScheme.error.withValues(alpha: 0.85),
                         borderRadius: BorderRadius.circular(14),
                       ),
                       child: const Icon(Icons.delete_outline,
@@ -154,7 +154,8 @@ class _MarkBar extends StatelessWidget {
           const SizedBox(height: 4),
           LinearProgressIndicator(
             value: mark / 100,
-            backgroundColor: theme.colorScheme.secondary.withOpacity(0.15),
+            backgroundColor:
+                theme.colorScheme.secondary.withValues(alpha: 0.15),
             valueColor:
                 AlwaysStoppedAnimation<Color>(theme.colorScheme.secondary),
             borderRadius: BorderRadius.circular(4),

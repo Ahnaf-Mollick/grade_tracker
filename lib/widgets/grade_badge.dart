@@ -18,7 +18,7 @@ class GradeBadge extends StatelessWidget {
       decoration: BoxDecoration(
         color: color.withValues(alpha: 0.12),
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: color.withOpacity(0.4), width: 1.4),
+        border: Border.all(color: color.withValues(alpha: 0.4), width: 1.4),
       ),
       alignment: Alignment.center,
       child: Text(

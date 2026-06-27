@@ -67,7 +67,7 @@ class AppTheme {
       cardTheme: CardThemeData(
         color: _lightSurface,
         elevation: 2,
-        shadowColor: _lightPrimary.withOpacity(0.08),
+        shadowColor: _lightPrimary.withValues(alpha: 0.08),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
       ),
@@ -82,7 +82,7 @@ class AppTheme {
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: _lightSubtle.withOpacity(0.3)),
+          borderSide: BorderSide(color: _lightSubtle.withValues(alpha: 0.3)),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -123,10 +123,10 @@ class AppTheme {
         labelLarge: TextStyle(
             color: _lightOnPrimary, fontSize: 15, fontWeight: FontWeight.w600),
       ),
-      dividerTheme:
-          DividerThemeData(color: _lightSubtle.withOpacity(0.15), thickness: 1),
+      dividerTheme: DividerThemeData(
+          color: _lightSubtle.withValues(alpha: 0.15), thickness: 1),
       chipTheme: ChipThemeData(
-        backgroundColor: _lightAccent.withOpacity(0.12),
+        backgroundColor: _lightAccent.withValues(alpha: 0.12),
         labelStyle: const TextStyle(
             color: _lightPrimary, fontWeight: FontWeight.w600, fontSize: 12),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
@@ -176,7 +176,7 @@ class AppTheme {
       cardTheme: CardThemeData(
         color: _darkSurface,
         elevation: 2,
-        shadowColor: Colors.black.withOpacity(0.4),
+        shadowColor: Colors.black.withValues(alpha: 0.4),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
       ),
@@ -191,7 +191,7 @@ class AppTheme {
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: _darkSubtle.withOpacity(0.3)),
+          borderSide: BorderSide(color: _darkSubtle.withValues(alpha: 0.3)),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -232,10 +232,10 @@ class AppTheme {
         labelLarge: TextStyle(
             color: _darkOnPrimary, fontSize: 15, fontWeight: FontWeight.w600),
       ),
-      dividerTheme:
-          DividerThemeData(color: _darkSubtle.withOpacity(0.2), thickness: 1),
+      dividerTheme: DividerThemeData(
+          color: _darkSubtle.withValues(alpha: 0.2), thickness: 1),
       chipTheme: ChipThemeData(
-        backgroundColor: _darkAccent.withOpacity(0.15),
+        backgroundColor: _darkAccent.withValues(alpha: 0.15),
         labelStyle: const TextStyle(
             color: _darkPrimary, fontWeight: FontWeight.w600, fontSize: 12),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),

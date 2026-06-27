@@ -151,10 +151,10 @@ class _GradePreviewCard extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        color: theme.colorScheme.secondary.withOpacity(0.08),
+        color: theme.colorScheme.secondary.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(10),
-        border:
-            Border.all(color: theme.colorScheme.secondary.withOpacity(0.25)),
+        border: Border.all(
+            color: theme.colorScheme.secondary.withValues(alpha: 0.25)),
       ),
       child: Row(
         children: [
