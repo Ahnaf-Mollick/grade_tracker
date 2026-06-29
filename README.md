@@ -62,6 +62,7 @@ lib/
 ├── providers/
 │   ├── subject_provider.dart  # List<Subject> state + .map() / .where() usage
 │   └── theme_provider.dart    # Light/dark toggle
+|   └── nav_provider.dart      # bottom navigation    
 ├── screens/
 │   ├── add_subject_screen.dart   # Screen 1 — form with validation
 │   ├── subject_list_screen.dart  # Screen 2 — ListView + Dismissible
